@@ -61,7 +61,7 @@ class StringCalculatorApplicationTest {
 
         // when then
         assertThatThrownBy(() -> StringCalculatorApplication.main(new String[0]))
-            .isInstanceOf(IllegalArgumentException.class)
+            .isInstanceOf(NumberFormatException.class)
             .hasMessage("잘못된 피연산자가 사용되었습니다.");
     }
 
@@ -74,7 +74,7 @@ class StringCalculatorApplicationTest {
 
         // when then
         assertThatThrownBy(() -> StringCalculatorApplication.main(new String[0]))
-            .isInstanceOf(IllegalArgumentException.class)
+            .isInstanceOf(NumberFormatException.class)
             .hasMessage("0으로 나눌 수 없습니다.");
     }
 }

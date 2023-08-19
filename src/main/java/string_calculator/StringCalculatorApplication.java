@@ -16,27 +16,27 @@ public class StringCalculatorApplication {
         String value = scanner.nextLine();
         String[] values = value.split(" ");
 
-        List<Integer> nums = new ArrayList<>();
-        List<Operator> calOperator = new ArrayList<>();
+        List<Integer> operands = new ArrayList<>();
+        List<Operator> operators = new ArrayList<>();
 
 
         for (int i = 0; i < values.length; ++i) {
             if (i % 2 == 0) {
                 try {
-                    nums.add(Integer.parseInt(values[i]));
+                    operands.add(Integer.parseInt(values[i]));
                     continue;
                 } catch (NumberFormatException ex) {
-                    throw new IllegalArgumentException("잘못된 피연산자가 사용되었습니다.");
+                    throw new NumberFormatException("잘못된 피연산자가 사용되었습니다.");
                 }
             }
 
-            calOperator.add(Operator.fromName(values[i]));
+            operators.add(Operator.fromName(values[i]));
         }
 
-        for (int i = 1; i < nums.size(); ++i) {
-            nums.set(i, calOperator.get(i - 1).operate(nums.get(i - 1), nums.get(i)));
+        for (int i = 1; i < operands.size(); ++i) {
+            operands.set(i, operators.get(i - 1).operate(operands.get(i - 1), operands.get(i)));
         }
 
-        System.out.println(nums.get(nums.size() - 1));
+        System.out.println(operands.get(operands.size() - 1));
      }
 }
