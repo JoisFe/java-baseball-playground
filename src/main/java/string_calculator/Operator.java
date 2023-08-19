@@ -32,6 +32,6 @@ public enum Operator {
                 return operator;
             }
         }
-        throw new IllegalArgumentException("해당 name에 매칭되는 값이 없습니다.");
+        throw new IllegalArgumentException("잘못된 연산자가 사용되었습니다.");
     }
 }

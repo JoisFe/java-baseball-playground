@@ -22,8 +22,12 @@ public class StringCalculatorApplication {
 
         for (int i = 0; i < values.length; ++i) {
             if (i % 2 == 0) {
-                nums.add(Integer.parseInt(values[i]));
-                continue;
+                try {
+                    nums.add(Integer.parseInt(values[i]));
+                    continue;
+                } catch (NumberFormatException ex) {
+                    throw new IllegalArgumentException("잘못된 피연산자가 사용되었습니다.");
+                }
             }
 
             calOperator.add(Operator.fromName(values[i]));
